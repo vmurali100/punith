@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var Person = function (fname, lname, email) {
+      //     this.fname = fname;
+      //     this.lname = lname;
+      //     this.email = email;
+      //   }; // Constructor Function for Creating an Object
+
+      //   var person1 = new Person("Murali", "Krishna", "murali@gmail.com");
+      //   var person2 = new Person("Ram", "Krishna", "ram@gmail.com");
+
+      //   console.log(person1);
+      //   person2.fname = "Ram Kumar";
+      //   console.log(person2);
+
+      class person {
+        constructor(fname, lname, email) {
+          this.fname = fname;
+          this.lname = lname;
+          this.email = email;
+        }
+      }
+
+      var person1 = new person("Murali", "krishna", "murali@gmail.com");
+      var person2 = new person("Punith", "Kumar", "punith@gmail.com");
+
+      console.log(person1);
+      console.log(person2);
+    </script>
+  </body>
+</html>
