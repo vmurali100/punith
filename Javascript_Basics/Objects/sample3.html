@@ -25,12 +25,20 @@
           this.fname = fname;
           this.lname = lname;
           this.email = email;
+          this.fullName = function () {
+            return this.fname + " " + this.lname;
+          };
         }
       }
 
       var person1 = new person("Murali", "krishna", "murali@gmail.com");
       var person2 = new person("Punith", "Kumar", "punith@gmail.com");
 
+      function showFullName(fname, lname) {
+        return fname + " " + lname;
+      }
+
+      console.log(showFullName("Ram", "Kumar"));
       console.log(person1);
       console.log(person2);
     </script>
