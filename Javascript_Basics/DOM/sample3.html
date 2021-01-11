@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="displayUsers()">Display Users</button>
+    <ul>
+        
+    </ul>
+    <script>
+        var allUsers = ["Murali","Punith","Ram","Ravi"]
+        
+        function displayUsers() {
+            allUsers.forEach((user)=>{
+            var myLi = document.createElement('li')
+            myLi.innerHTML = user;
+            document.querySelector("ul").appendChild(myLi)
+        })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="displayUsers()">Display User</button>
+    <button onclick="addUser()">Add User</button>
+    <table border="1">
+        <thead>
+            <th>First Name </th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        //Array of Objects
+        var allUsers = [
+            { fname: "Murali", lname: "Krishna", email: "murali@gmail.com" },
+            { fname: "Punith", lname: "Kumar", email: "punith@gmail.com" },
+            { fname: "Ram", lanme: "krishna", email: "ram@gmail.com" },
+            { fname: "Ravi", lname: "shankar", email: "ravi@gmail.com" }]
+
+        function displayUsers() {
+            allUsers.forEach((user) => {
+                var myTr = document.createElement("tr")
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+    </script>
+</body>
+
+</html>
