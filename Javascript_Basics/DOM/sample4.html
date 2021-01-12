@@ -22,6 +22,16 @@
 
         </tbody>
     </table>
+    <br>
+    <form>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname"> <br>
+        <label for="lname">Last Name </label>
+        <input type="text" id="lname"> <br>
+        <label for="email">Email</label>
+        <input type="text" id="email"> <br>
+        <button type="button" onclick="updateUser()">UpdateUser</button>
+    </form>
     <script>
         //Array of Objects
         var allUsers = [
@@ -29,17 +39,62 @@
             { fname: "Punith", lname: "Kumar", email: "punith@gmail.com" },
             { fname: "Ram", lanme: "krishna", email: "ram@gmail.com" },
             { fname: "Ravi", lname: "shankar", email: "ravi@gmail.com" }]
-
+        displayUsers()
         function displayUsers() {
-            allUsers.forEach((user) => {
+            document.querySelector("tbody").innerHTML = ""
+
+            allUsers.forEach((user, i) => {
                 var myTr = document.createElement("tr")
+                // For in loop will display all  values in Object
                 for (a in user) {
                     var myTd = document.createElement("td")
                     myTd.innerHTML = user[a]
                     myTr.appendChild(myTd)
                 }
+
+                // Creating a Td for Edit
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.innerHTML = "Edit"
+                editBtn.setAttribute("onclick", "editUser(" + i + ")")
+                editTd.appendChild(editBtn)
+                myTr.appendChild(editTd)
+
+                // Creating a Td for Delete
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.innerHTML = "Delete";
+                deleteBtn.setAttribute("onclick", "deleteUser(" + i + ")")
+                deleteTd.appendChild(deleteBtn)
+                myTr.appendChild(deleteTd)
                 document.querySelector("tbody").appendChild(myTr)
             })
+        }
+
+        function deleteUser(i) {
+            allUsers.splice(i, 1)
+            displayUsers()
+        }
+
+        function editUser(i) {
+            // Creating a Global Variable called index to Use in UpdateUser Function
+            index = i
+            for (a in allUsers[i]) {
+                document.getElementById(a).value = allUsers[i][a]
+            }
+        }
+
+        function updateUser() {
+            var newPerson = {
+                fname: "",
+                lname: "",
+                email: ""
+            }
+            for (a in newPerson) {
+                newPerson[a] = document.getElementById(a).value
+            }
+            allUsers[index] = newPerson;
+            displayUsers()
         }
     </script>
 </body>

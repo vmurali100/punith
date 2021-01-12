@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname"> <br>
+        <label for="lname">Last Name </label>
+        <input type="text" id="lname"> <br>
+        <label for="email">Email</label>
+        <input type="text" id="email"> <br>
+        <button type="button" onclick="setValues()">Set Value</button>
+    </form>
+
+    <script>
+        function setValues() {
+            var person = {
+                fname: "Murali",
+                lname: "Krishna",
+                email: "murali@gmail.com"
+            }
+
+            for (a in person) {
+                document.getElementById(a).value = person[a]
+            }
+            //Beginner Way
+            // document.getElementById("fname").value = person.fname
+            // document.getElementById("lname").value = person.lname
+            // document.getElementById("email").value = person.email
+        }
+    </script>
+</body>
+
+</html>
