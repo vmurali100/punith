@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div id="user"></div>
+<br>
+<hr>
+<br>
+<div id="user2"></div>
+
+<body>
+    <script>
+        var user = {
+            role: "UI Developer",
+            company: "ABC",
+            salary: "100000",
+            City: "Bangalore",
+
+            empDetails: function () {
+                return this.role + "<br>" + this.company + "<br>" + this.salary + "<br>" + this.City
+            }
+        }
+        document.getElementById("user").innerHTML = user.empDetails()
+
+        var user2 = {
+            role: "Full Stack Developer",
+            company: "XYZ",
+            salary: "200000",
+            City: "Chennai",
+            empDetails: function (msg) {
+                console.log(msg)
+                return this.role + "<br>" + this.company + "<br>" + this.salary + "<br>" + this.City + "<br>" + msg
+            }
+        }
+
+        // Call is A provision of function barrowing from Another Object
+        // In call we can pass any arguments as Strings , But in Apply we have to pass the arguments as Arrays
+        // Bind will give an instance of barrowed function
+
+
+        var sampleFunc = user.empDetails.bind(user2, ["ram"])
+        document.getElementById("user2").innerHTML = sampleFunc()
+        // document.getElementById("user2").innerHTML = user2.empDetails()
+    </script>
+</body>
+
+</html>

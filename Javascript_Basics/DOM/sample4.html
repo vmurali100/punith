@@ -9,7 +9,7 @@
 
 <body>
     <button onclick="displayUsers()">Display User</button>
-    <button onclick="addUser()">Add User</button>
+    <button onclick="showAddUser()">Add User</button>
     <table border="1">
         <thead>
             <th>First Name </th>
@@ -23,26 +23,26 @@
         </tbody>
     </table>
     <br>
-    <form>
+    <form style="display: none;">
         <label for="fname">First Name</label>
-        <input type="text" id="fname"> <br>
+        <input type="text" id="fname" onkeyup="checkFormValues()"> <br>
         <label for="lname">Last Name </label>
-        <input type="text" id="lname"> <br>
+        <input type="text" id="lname" onkeyup="checkFormValues()"> <br>
         <label for="email">Email</label>
-        <input type="text" id="email"> <br>
-        <button type="button" onclick="updateUser()">UpdateUser</button>
+        <input type="text" id="email" onkeyup="checkFormValues()"> <br>
+        <button type="button" onclick="updateUser()" id="updateUserBtn" style="display: none;">UpdateUser</button>
+        <button type="button" onclick="addUser()" id="addUserBtn" style="display: none;" disabled>Add User</button>
     </form>
     <script>
         //Array of Objects
         var allUsers = [
             { fname: "Murali", lname: "Krishna", email: "murali@gmail.com" },
             { fname: "Punith", lname: "Kumar", email: "punith@gmail.com" },
-            { fname: "Ram", lanme: "krishna", email: "ram@gmail.com" },
+            { fname: "Ram", lname: "krishna", email: "ram@gmail.com" },
             { fname: "Ravi", lname: "shankar", email: "ravi@gmail.com" }]
         displayUsers()
         function displayUsers() {
             document.querySelector("tbody").innerHTML = ""
-
             allUsers.forEach((user, i) => {
                 var myTr = document.createElement("tr")
                 // For in loop will display all  values in Object
@@ -82,6 +82,9 @@
             for (a in allUsers[i]) {
                 document.getElementById(a).value = allUsers[i][a]
             }
+            document.querySelector("form").style.display = "block"
+            document.getElementById("addUserBtn").style.display = "none"
+            document.getElementById("updateUserBtn").style.display = "block"
         }
 
         function updateUser() {
@@ -95,6 +98,77 @@
             }
             allUsers[index] = newPerson;
             displayUsers()
+            document.querySelector("form").style.display = "none"
+        }
+
+        function showAddUser() {
+            document.querySelector("form").style.display = "block"
+            document.getElementById("addUserBtn").style.display = "block"
+            document.getElementById("updateUserBtn").style.display = "none"
+            clearForm()
+        }
+
+        function addUser() {
+            var newPerson = {
+                fname: "",
+                lname: "",
+                email: ""
+            }
+            for (a in newPerson) {
+                newPerson[a] = document.getElementById(a).value
+            }
+            allUsers.push(newPerson);
+            clearForm()
+            displayUsers()
+        }
+
+        function clearForm() {
+            var newPerson = {
+                fname: "",
+                lname: "",
+                email: ""
+            }
+            for (a in newPerson) {
+                document.getElementById(a).value = ""
+            }
+        }
+
+        function checkFormValues() {
+            var checkFormValid = false
+            var newPerson = {
+                fname: "",
+                lname: "",
+                email: ""
+            }
+            for (a in newPerson) {
+                newPerson[a] = document.getElementById(a).value
+            }
+
+            //Check form Valid
+
+            for (a in newPerson) {
+                //check for First Name
+                if (a == "fname" || a == "lname") {
+                    if (newPerson[a].length >= 6) {
+                        checkFormValid = true
+                    } else {
+                        checkFormValid = false
+                    }
+                } else if (a == "email") {
+                    var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                    if (pattern.test(newPerson[a])) {
+                        checkFormValid = true
+                    } else {
+                        checkFormValid = false
+                    }
+                }
+            }
+
+            if (checkFormValid) {
+                document.getElementById("addUserBtn").removeAttribute("disabled")
+            } else {
+                document.getElementById("addUserBtn").setAttribute("disabled", true)
+            }
         }
     </script>
 </body>

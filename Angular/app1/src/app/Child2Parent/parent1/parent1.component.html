@@ -1,0 +1,12 @@
+<p>parent1 works!</p>
+<p>Message From Child Component : {{msg}}</p>
+<ul *ngIf="rObj">
+    <li>{{rObj.fname}}</li>
+    <li>{{rObj.lname}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let user of rUsers">{{user}}</li>
+</ul>
+<hr>
+<app-child1 (Ousers)="receiveUsers($event)" (Omessage)="getMessage($event)" (Oobj)="receiveObj($event)"></app-child1>
