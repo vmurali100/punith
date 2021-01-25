@@ -10,6 +10,8 @@ import { Parent1Component } from './Child2Parent/parent1/parent1.component';
 import { Child1Component } from './Child2Parent/child1/child1.component';
 import { Comp1Component } from './Comp2Comp/comp1/comp1.component';
 import { Comp2Component } from './Comp2Comp/comp2/comp2.component';
+import { PunitkumarComponent } from './Comp2Comp/punitkumar/punitkumar.component';
+import { MuralikrishnaComponent } from './Comp2Comp/muralikrishna/muralikrishna.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { Comp2Component } from './Comp2Comp/comp2/comp2.component';
     Child1Component,
     Comp1Component,
     Comp2Component,
+    PunitkumarComponent,
+    MuralikrishnaComponent,
     
   ],
   imports: [
