@@ -1,1 +1,11 @@
 <p>punit works!</p>
+<button (click)="getUserDetails()">Get Users</button>
+
+<ng-container>
+
+    <ul *ngFor="let user of allUsers">
+        <li *ngFor="let val of convertObjArray(user)">
+            {{val}}
+        </li>
+    </ul>
+</ng-container>

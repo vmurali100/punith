@@ -13,7 +13,7 @@ export class Comp2Component implements OnInit {
 
   ngOnInit(): void {
     this.commonService.echangeMessage.subscribe(res=>{
-      this.message = res
+      // this.message = res
     })
   }
 
